@@ -1,0 +1,16 @@
+language: java
+
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "a9X0jcpHlDKwESX6TtSm0gqt0W7j8J3P/YGdFaxBsPCc11EKQ4JmmVwD8lgTpnpRaCEfuWddjbT56lE+dQ6NVBqYCTrfHMBcaipp0I4iLfnBAHZXmDNLPVOh0ZlOuV5HUwVHfOWkVyVemiH040rJxnVQSB33EX+KnDngvc1YOFuNvV2tNVFDq2a+0xoh3xbUAkBYZ6aBU44B0pDRjwl1TI6EE/X2eDRrXfy4mxYkr6nRCLQoQvaxcWPVKAkAxfyIsMFlJzYKY19LgR40rNXwNtsbL64qyWk42kmBCsC8l0Lg6cofDDHqAqyjEp/ihmCq19bK6dhJiyijN8/QsbswctTCiyVrboqLHwFOSFmBnc5acKI0zTuAxwkMySvg2NNcd+qHCHitS81zNF/kfXhbyYJzMxPjagfWsVuZAqjycsl4GKdg5el5aLyoJ56jh3mGk5FeMDLT3/lQ7Wnr3Cl5hfMIqkKUfCEU2gXNdNNI561B8EEF6xdmNKLthBEQyHjktDcGQaWXdDbOzqS195qtwupLsnn37mW+ia/AfjI1Srtu5d0XupHQrFwN00VTlxtm5TtV/csoqN06u3VZ0/hOVPTz3ktGwndvi96Jp/BSG1N48RUNx3lahdbR24bH9t75AOZnqW0pXVcEYBaDH3X+1E4gX7JPYCMxh7lXT6snXOc="
+
+addons:
+  coverity_scan:
+    project:
+      name: "allenmg/shop-assistant"
+      description: "Build submitted via Travis CI"
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
+    branch_pattern: coverity_scan
