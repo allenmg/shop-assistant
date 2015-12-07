@@ -13,7 +13,7 @@ addons:
     project:
       name: "allenmg/shop-assistant"
       description: "Build submitted via Travis CI"
-      notification_email: allenmg@users.noreply.github.com
+    notification_email: allenmg.coverity@gmail.com
     build_command_prepend: "mvn clean"
     build_command:   "mvn -DskipTests=true compile"
     branch_pattern: coverity_scan
