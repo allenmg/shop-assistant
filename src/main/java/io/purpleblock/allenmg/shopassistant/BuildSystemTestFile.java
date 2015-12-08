@@ -1,4 +1,4 @@
-package com.thepurpleblock.allenmg.shopassistant;
+package io.purpleblock.allenmg.shopassistant;
 
 public class BuildSystemTestFile {
 
