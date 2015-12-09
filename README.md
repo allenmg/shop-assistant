@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.org/allenmg/shop-assistant.svg?branch=master)](https://travis-ci.org/allenmg/shop-assistant) [![Coverity Scan Build Status](https://scan.coverity.com/projects/7217/badge.svg)](https://scan.coverity.com/projects/7217)
+[![Build Status](https://travis-ci.org/allenmg/shop-assistant.svg?branch=master)](https://travis-ci.org/allenmg/shop-assistant) [![Coverity Scan Build Status](https://scan.coverity.com/projects/7217/badge.svg)](https://scan.coverity.com/projects/7217) [![Coverage Status](https://coveralls.io/repos/allenmg/shop-assistant/badge.svg?branch=master&service=github)](https://coveralls.io/github/allenmg/shop-assistant?branch=master)
 
 # Shop Assistant
 System for managing small automotive repair shops.
