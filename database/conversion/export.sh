@@ -10,7 +10,7 @@ for mdbfile in $(ls input); do
 	mdb-schema input/$mdbfile sqlite > output/$dbname/schema/$dbname.sql
 	for table in $(mdb-tables input/$mdbfile); do
 		echo "Generating inserts for $dbname::$table"
-		mdb-export -I sqlite input/$mdbfile $table > output/$dbname/inserts/$table.sql
+		mdb-export -D "%Y-%m-%d %H:%M:%S" -I sqlite input/$mdbfile $table > output/$dbname/inserts/$table.sql
 	done
 done
 
