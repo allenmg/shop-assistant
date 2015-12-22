@@ -13,3 +13,11 @@ System for managing small automotive repair shops.
   * sale / purchase tracking
   * invoices
   * ..more?
+
+##Backing Technologies
+* H2 database http://www.h2database.com/html/main.html
+* JavaFX
+  * Oracle JDK 8 http://www.oracle.com/technetwork/java/javase/overview/index.html
+  * Gluon Scene Builder http://gluonhq.com/open-source/scene-builder/
+* Hibernate ORM http://hibernate.org/orm/
+* Guice https://github.com/google/guice
