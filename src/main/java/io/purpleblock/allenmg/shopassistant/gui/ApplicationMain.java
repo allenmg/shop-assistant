@@ -1,11 +1,14 @@
 package io.purpleblock.allenmg.shopassistant.gui;
 
+import io.purpleblock.allenmg.shopassistant.persistence.ShopSessionFactoryProvider;
 import javafx.application.Application;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import javafx.stage.WindowEvent;
 
 public class ApplicationMain extends Application {
 
@@ -26,6 +29,15 @@ public class ApplicationMain extends Application {
 		primaryStage.setScene(scene);
 		Image icon = new Image(getClass().getResourceAsStream("157-wrench-icon.png"));
 		primaryStage.getIcons().add(icon);
+		
+		ShopSessionFactoryProvider.getSessionFactory();
+		primaryStage.setOnCloseRequest(new EventHandler<WindowEvent>(){
+			@Override
+			public void handle(WindowEvent event) {
+				ShopSessionFactoryProvider.closeFactory();
+			}
+		});
+		
 		primaryStage.show();
 	}
 

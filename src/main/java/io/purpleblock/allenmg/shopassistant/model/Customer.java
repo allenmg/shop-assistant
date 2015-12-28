@@ -12,6 +12,7 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -40,6 +41,10 @@ public class Customer {
 		inverseForeignKey=@ForeignKey(name="vehicle_fk")
 	)
 	private List<Vehicle> vehicles;
+	
+	@OneToOne
+	@JoinColumn(name="address_id")
+	private Address address;
 
 	public Long getId() {
 		return id;
@@ -79,5 +84,13 @@ public class Customer {
 
 	public void setVehicles(List<Vehicle> vehicles) {
 		this.vehicles = vehicles;
+	}
+
+	public Address getAddress() {
+		return address;
+	}
+
+	public void setAddress(Address address) {
+		this.address = address;
 	}
 }

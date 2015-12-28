@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="210.0" prefWidth="299.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.purpleblock.allenmg.shopassistant.gui.vehicle.VehicleController">
+   <children>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Plate" />
+            <TextField fx:id="plateField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Year" />
+            <TextField fx:id="yearField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Make" />
+            <TextField fx:id="makeField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Model" />
+            <TextField fx:id="modelField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="VIN #" />
+            <TextField fx:id="vinNumberField" />
+         </children>
+      </FlowPane>
+      <FlowPane alignment="TOP_RIGHT" hgap="5.0" layoutX="15.0" layoutY="139.0">
+         <children>
+            <Button mnemonicParsing="false" onAction="#save" text="Save" />
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

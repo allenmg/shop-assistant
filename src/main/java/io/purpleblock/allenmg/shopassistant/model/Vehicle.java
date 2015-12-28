@@ -23,6 +23,12 @@ public class Vehicle {
 	@Column(name="id")
 	private Long id;
 	
+	@Column(name="plate")
+	private String plate;
+
+	@Column(name="vin")
+	private String vin;
+	
 	@Column(name="make")
 	private String make;
 	
@@ -50,6 +56,22 @@ public class Vehicle {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+	
+	public String getPlate() {
+		return plate;
+	}
+
+	public void setPlate(String plate) {
+		this.plate = plate;
+	}
+
+	public String getVin() {
+		return vin;
+	}
+
+	public void setVin(String vin) {
+		this.vin = vin;
 	}
 
 	public String getMake() {
