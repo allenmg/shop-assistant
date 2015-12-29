@@ -5,7 +5,9 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 
-public class ShopSessionFactoryProvider {
+import com.google.inject.Provider;
+
+public class ShopSessionFactoryProvider implements Provider<SessionFactory>{
 	
 	private static SessionFactory sessionFactory;
 	
@@ -30,5 +32,10 @@ public class ShopSessionFactoryProvider {
 	
 	static public void closeFactory() {
 		sessionFactory.close();
+	}
+
+	@Override
+	public SessionFactory get() {
+		return getSessionFactory();
 	}
 }
