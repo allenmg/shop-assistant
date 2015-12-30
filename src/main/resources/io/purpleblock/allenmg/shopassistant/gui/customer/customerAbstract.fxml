@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="161.0" prefWidth="288.0" spacing="5.0" xmlns="http://javafx.com/javafx/8.0.66" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.purpleblock.allenmg.shopassistant.gui.customer.AbstractCustomerController">
+   <children>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Last Name" />
+            <TextField fx:id="lastNameField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="First Name" />
+            <TextField fx:id="firstNameField" />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Address" />
+            <TextField />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Phone #" />
+            <TextField />
+         </children>
+      </FlowPane>
+      <FlowPane hgap="5.0">
+         <children>
+            <Label text="Birthdate" />
+            <TextField />
+         </children>
+      </FlowPane>
+   </children>
+   <padding>
+      <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+   </padding>
+</VBox>

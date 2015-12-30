@@ -30,7 +30,7 @@
       </FlowPane>
       <TitledPane animated="false" collapsible="false" text="Customer Information">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <fx:include fx:id="customerAbstract" source="/io/purpleblock/allenmg/shopassistant/gui/customer/customerAbstract.fxml"></fx:include>
         </content>
       </TitledPane>
       <TitledPane animated="false" collapsible="false" text="Vehicle Information">

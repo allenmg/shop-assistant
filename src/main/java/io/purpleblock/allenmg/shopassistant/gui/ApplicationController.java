@@ -1,13 +1,6 @@
 package io.purpleblock.allenmg.shopassistant.gui;
 
 import java.io.IOException;
-import java.math.BigInteger;
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.LocalTime;
-import java.time.Month;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.inject.Inject;
 
@@ -142,18 +135,6 @@ public class ApplicationController {
 		
 	}
 	
-	public List<Vehicle> getVehicles() {
-		ArrayList<Vehicle> vehicles = new ArrayList<Vehicle>();
-		int id = 1;
-		
-		vehicles.add(buildVehicle(id++, "Saturn", "SL", 1996, LocalDate.of(2005, Month.JULY, 3)));
-		vehicles.add(buildVehicle(id++, "Buick", "Park Avenue", 2003, LocalDate.of(2008, Month.MAY, 15)));
-		vehicles.add(buildVehicle(id++, "Chevrolet", "Impala", 2006, LocalDate.of(2014, 11, 6)));
-		vehicles.add(buildVehicle(id++, "Tesla", "Model S", 2015, LocalDate.of(2015, 8, 3)));
-		
-		return vehicles;
-	}
-	
 	public void populateCustomerTable() {
 		customerTable.getItems().clear();
 		customerTable.getItems().addAll(customerDao.getCustomers());
@@ -162,16 +143,6 @@ public class ApplicationController {
 	public void populateVehicleTable() {
 		vehicleTable.getItems().clear();
 		vehicleTable.getItems().addAll(vehicleDao.getVehicles());
-	}
-	
-	private Vehicle buildVehicle(int id, String make, String model, int year, LocalDate ts) {
-		Vehicle v = new Vehicle();
-		v.setId(Long.valueOf(id));
-		v.setMake(make);
-		v.setModel(model);
-		v.setYear(BigInteger.valueOf(year));
-		v.setTs(LocalDateTime.of(ts, LocalTime.of(0, 0)));
-		return v;
 	}
 	
 	public void initialize() {
@@ -223,14 +194,14 @@ public class ApplicationController {
 	
 	public void addWorkOrder(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
-	    Parent root = GuiceFXMLLoader.load(
-	        WorkOrderController.class.getResource("workorder.fxml"));
+		GuiceFXMLLoader loader = new GuiceFXMLLoader(WorkOrderController.class.getResource("workorder.fxml"));
+	    Parent root = loader.load();
+	    loader.getFXMLLoader().<WorkOrderController>getController().setCustomer(customerDao.getCustomers().get(0));
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Work Order");
 	    stage.initModality(Modality.WINDOW_MODAL);
 	    stage.initOwner(
 	        ((Node)event.getSource()).getScene().getWindow() );
-	    
 	    stage.setOnHiding(new EventHandler<WindowEvent>() {
 			@Override
 			public void handle(WindowEvent event) {
