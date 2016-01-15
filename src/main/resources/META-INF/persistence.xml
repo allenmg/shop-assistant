@@ -6,7 +6,7 @@
 	<persistence-unit name="shop_manager" transaction-type="RESOURCE_LOCAL">
 	
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>io.purpleblock.allenmg.shopassistant.model</class>
+		<class>io.purpleblock.shopassistant.model</class>
 
 		<shared-cache-mode>ENABLE_SELECTIVE</shared-cache-mode>
 		<validation-mode>NONE</validation-mode>
