@@ -1,85 +1,60 @@
 package io.purpleblock.allenmg.shopassistant.model;
 
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
-import javafx.beans.property.LongProperty;
 import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleLongProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 @Entity
 @Table(name="CUSTOMER")
-public class Customer {
+public class Customer extends BaseEntity {
 	
-	private LongProperty id;
-	private StringProperty lastName;
-	private StringProperty firstName;
-	private ObjectProperty<LocalDateTime> ts;
-	private ObjectProperty<List<Vehicle>> vehicles;
-	private ObjectProperty<Address> address;
+	private final StringProperty lastName = new SimpleStringProperty();
+	private final StringProperty firstName = new SimpleStringProperty();
+	private final ObjectProperty<List<Vehicle>> vehicles = new SimpleObjectProperty<List<Vehicle>>();
+	private final ObjectProperty<Address> address = new SimpleObjectProperty<Address>();
 	
-	public Customer() {
-		this.id = new SimpleLongProperty();
-		this.lastName = new SimpleStringProperty();
-		this.firstName = new SimpleStringProperty();
-		this.ts = new SimpleObjectProperty<LocalDateTime>();
-		this.vehicles = new SimpleObjectProperty<List<Vehicle>>();
-		this.address = new SimpleObjectProperty<Address>();
+	public final StringProperty lastNameProperty() {
+		return this.lastName;
 	}
 	
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	public Long getId() {
-		return id.get();
-	}
-
-	public void setId(Long id) {
-		this.id.set(id);
-	}
-
 	@Column(name="last_name")
-	public String getLastName() {
-		return lastName.get();
+	public final java.lang.String getLastName() {
+		return this.lastNameProperty().get();
 	}
-
-	public void setLastName(String lastName) {
-		this.lastName.set(lastName);
+	
+	public final void setLastName(final java.lang.String lastName) {
+		this.lastNameProperty().set(lastName);
 	}
-
+	
+	public final StringProperty firstNameProperty() {
+		return this.firstName;
+	}
+	
 	@Column(name="first_name")
-	public String getFirstName() {
-		return firstName.get();
+	public final java.lang.String getFirstName() {
+		return this.firstNameProperty().get();
 	}
-
-	public void setFirstName(String firstName) {
-		this.firstName.set(firstName);
+	
+	public final void setFirstName(final java.lang.String firstName) {
+		this.firstNameProperty().set(firstName);
 	}
-
-	@Column(name="ts", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false)
-	public LocalDateTime getTs() {
-		return ts.get();
+	
+	public final ObjectProperty<List<Vehicle>> vehiclesProperty() {
+		return this.vehicles;
 	}
-
-	public void setTs(LocalDateTime ts) {
-		this.ts.set(ts);
-	}
-
+	
 	@ManyToMany
 	@JoinTable(name = "CUSTOMER_VEHICLE", 
 		joinColumns = { @JoinColumn(name = "CUSTOMER_ID") }, 
@@ -87,47 +62,26 @@ public class Customer {
 		foreignKey=@ForeignKey(name="customer_fk"),
 		inverseForeignKey=@ForeignKey(name="vehicle_fk")
 	)
-	public List<Vehicle> getVehicles() {
-		return vehicles.get();
+	public final java.util.List<io.purpleblock.allenmg.shopassistant.model.Vehicle> getVehicles() {
+		return this.vehiclesProperty().get();
 	}
-
-	public void setVehicles(List<Vehicle> vehicles) {
-		this.vehicles.set(vehicles);
+	
+	public final void setVehicles(final java.util.List<io.purpleblock.allenmg.shopassistant.model.Vehicle> vehicles) {
+		this.vehiclesProperty().set(vehicles);
 	}
-
+	
+	public final ObjectProperty<Address> addressProperty() {
+		return this.address;
+	}
+	
 	@OneToOne
 	@JoinColumn(name="address_id")
-	public Address getAddress() {
-		return address.get();
+	public final io.purpleblock.allenmg.shopassistant.model.Address getAddress() {
+		return this.addressProperty().get();
+	}
+	
+	public final void setAddress(final io.purpleblock.allenmg.shopassistant.model.Address address) {
+		this.addressProperty().set(address);
 	}
 
-	public void setAddress(Address address) {
-		this.address.set(address);
-	}
-	
-	/* -- Properties ---------------------------------------------- */
-
-	public LongProperty idProperty(){
-		return id;
-	}
-	
-	public StringProperty lastNameProperty(){
-		return lastName;
-	}
-	
-	public StringProperty firstNameProperty(){
-		return firstName;
-	}
-	
-	public ObjectProperty<LocalDateTime> tsProperty(){
-		return ts;
-	}
-	
-	public ObjectProperty<List<Vehicle>> vehiclesProperty(){
-		return vehicles;
-	}
-	
-	public ObjectProperty<Address> addressProperty(){
-		return address;
-	}
 }

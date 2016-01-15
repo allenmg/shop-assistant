@@ -11,10 +11,6 @@ import io.purpleblock.allenmg.shopassistant.model.Customer;
 import io.purpleblock.allenmg.shopassistant.model.Vehicle;
 import io.purpleblock.allenmg.shopassistant.persistence.CustomerDAO;
 import io.purpleblock.allenmg.shopassistant.persistence.VehicleDAO;
-import javafx.beans.property.SimpleLongProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.value.ObservableValue;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -22,13 +18,10 @@ import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.TabPane;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableColumn.CellDataFeatures;
 import javafx.scene.control.TableView;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import javafx.util.Callback;
 
 public class ApplicationController {
 	
@@ -45,96 +38,6 @@ public class ApplicationController {
 		this.customerDao = customerDao;
 	}
 	
-	public void initVehicleTable() {
-		ObservableList<TableColumn<Vehicle, ?>> columns = vehicleTable.getColumns();
-		
-		TableColumn<Vehicle, Number> idCol =  new TableColumn<Vehicle, Number>("Id");
-		idCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, Number>, ObservableValue<Number>>() {
-			public ObservableValue<Number> call(CellDataFeatures<Vehicle, Number> p) {
-				return new SimpleLongProperty(p.getValue().getId());
-			}
-		});
-		columns.add(idCol);
-		
-		TableColumn<Vehicle, String> makeCol =  new TableColumn<Vehicle, String>("Make");
-		makeCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getMake());
-			}
-		});
-		columns.add(makeCol);
-		
-		TableColumn<Vehicle, String> modelCol =  new TableColumn<Vehicle, String>("Model");
-		modelCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getModel());
-			}
-		});
-		columns.add(modelCol);
-		
-		TableColumn<Vehicle, String> yearCol =  new TableColumn<Vehicle, String>("Year");
-		yearCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getYear().toString());
-			}
-		});
-		columns.add(yearCol);
-		
-		TableColumn<Vehicle, String> plateCol =  new TableColumn<Vehicle, String>("Plate");
-		plateCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getPlate());
-			}
-		});
-		columns.add(plateCol);
-		
-		TableColumn<Vehicle, String> vinCol =  new TableColumn<Vehicle, String>("VIN #");
-		vinCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getVin());
-			}
-		});
-		columns.add(vinCol);
-		
-		TableColumn<Vehicle, String> tsCol =  new TableColumn<Vehicle, String>("Date Created");
-		tsCol.setCellValueFactory(new Callback<CellDataFeatures<Vehicle, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Vehicle, String> p) {
-				return new SimpleStringProperty(p.getValue().getTs().toString());
-			}
-		});
-		columns.add(tsCol);
-
-	}
-	
-	public void initCustomerTable() {
-		ObservableList<TableColumn<Customer, ?>> columns = customerTable.getColumns();
-		
-		TableColumn<Customer, Number> idCol =  new TableColumn<Customer, Number>("Id");
-		idCol.setCellValueFactory(new Callback<CellDataFeatures<Customer, Number>, ObservableValue<Number>>() {
-			public ObservableValue<Number> call(CellDataFeatures<Customer, Number> p) {
-				return new SimpleLongProperty(p.getValue().getId());
-			}
-		});
-		columns.add(idCol);
-		
-		TableColumn<Customer, String> lastNameCol =  new TableColumn<Customer, String>("Last Name");
-		lastNameCol.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
-				return new SimpleStringProperty(p.getValue().getLastName());
-			}
-		});
-		columns.add(lastNameCol);
-		
-		TableColumn<Customer, String> firstNameCol =  new TableColumn<Customer, String>("First Name");
-		firstNameCol.setCellValueFactory(new Callback<CellDataFeatures<Customer, String>, ObservableValue<String>>() {
-			public ObservableValue<String> call(CellDataFeatures<Customer, String> p) {
-				return new SimpleStringProperty(p.getValue().getFirstName());
-			}
-		});
-		columns.add(firstNameCol);
-		
-	}
-	
 	public void populateCustomerTable() {
 		customerTable.getItems().clear();
 		customerTable.getItems().addAll(customerDao.getCustomers());
@@ -146,10 +49,10 @@ public class ApplicationController {
 	}
 	
 	public void initialize() {
-		initVehicleTable();
+		VehicleTableFactory.initVehicleTableGeneralized(vehicleTable);
 		populateVehicleTable();
 		
-		initCustomerTable();
+		CustomerTableFactory.initCustomerTableGeneralized(customerTable);
 		populateCustomerTable();
 		
 	}

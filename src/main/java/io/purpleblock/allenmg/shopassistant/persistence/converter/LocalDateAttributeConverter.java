@@ -1,4 +1,4 @@
-package io.purpleblock.allenmg.shopassistant.model.converter;
+package io.purpleblock.allenmg.shopassistant.persistence.converter;
 
 import java.sql.Date;
 import java.time.LocalDate;

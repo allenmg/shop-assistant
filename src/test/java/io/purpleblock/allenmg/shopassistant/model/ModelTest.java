@@ -23,76 +23,71 @@
  */
 package io.purpleblock.allenmg.shopassistant.model;
 
-import java.util.ArrayList;
 import java.util.List;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.boot.MetadataSources;
-import org.hibernate.boot.registry.StandardServiceRegistry;
-import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
 
-import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Ignore;
+import org.junit.Test;
 
-/**
- * Illustrates the use of Hibernate native APIs.  The code here is unchanged from the {@code basic} example, the
- * only difference being the use of annotations to supply the metadata instead of Hibernate mapping files.
- *
- * @author Steve Ebersole
- */
-public class ModelTest extends TestCase {
-	private SessionFactory sessionFactory;
+public class ModelTest {
+	private EntityManager em;
 
-	@Override
-	protected void setUp() throws Exception {
-		// A SessionFactory is set up once for an application!
-		System.out.println("Building factory");
-		final StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-				.configure() // configures settings from hibernate.cfg.xml
-				.build();
-		try {
-			sessionFactory = new MetadataSources( registry ).buildMetadata().buildSessionFactory();
-			System.out.println("Built a factory taht is :"+sessionFactory);
-		}
-		catch (Exception e) {
-			e.printStackTrace();
-			// The registry would be destroyed by the SessionFactory, but we had trouble building the SessionFactory
-			// so destroy it manually.
-			StandardServiceRegistryBuilder.destroy( registry );
-		}
+	@Before
+	public void setUp() {
+		em = Persistence.createEntityManagerFactory("shop_manager").createEntityManager();
+		System.out.println("Built Factory:" + em);
 	}
 
-	@Override
-	protected void tearDown() throws Exception {
-		System.out.println("Breaking factory!!!");
-		if ( sessionFactory != null ) {
-			sessionFactory.close();
+	@After
+	public void tearDown() throws Exception {
+		em.close();
+	}
+
+	@Test
+	public void testVehicleMapping() {
+		System.out.println("Selecting Vehicles");
+		List<Vehicle> result = em.createQuery("from Vehicle", Vehicle.class).getResultList();
+		System.out.println(result.size());
+		for (Vehicle v : result) {
+			System.out.println(v);
 		}
 	}
 	
-	public void testVehicleCustomerMapping(){
-		Session session = sessionFactory.openSession();
-		session.beginTransaction();
-		Customer c = new Customer();
-		List<Vehicle> vehicles = new ArrayList<Vehicle>();
-		vehicles.add(new Vehicle());
-		vehicles.add(new Vehicle());
-		c.setVehicles(vehicles);
-		for(Vehicle v:vehicles){
-			session.save(v);
+	@Test
+	public void testCustomerMapping() {
+		System.out.println("Selecting Customers");
+		List<Customer> result = em.createQuery("from Customer", Customer.class).getResultList();
+		System.out.println(result.size());
+		for (Customer v : result) {
+			System.out.println(v);
 		}
-		session.save(c);
-		session.getTransaction().commit();
-		session.close();
-
-		// now lets pull events from the database and list them
-		session = sessionFactory.openSession();
-        session.beginTransaction();
-        List result = session.createQuery( "from Vehicle" ).list();
-		for ( Vehicle event : (List<Vehicle>) result ) {
-			System.out.println( "Vehicle");
+	}
+	
+	@Test
+	public void testCustomerVehicleMapping() {
+		System.out.println("Selecting Customers with vehicles");
+		List<Customer> result = em.createQuery("select c from Customer c join fetch c.vehicles", Customer.class).getResultList();
+		System.out.println(result.size());
+		for (Customer v : result) {
+			System.out.println(v);
 		}
-        session.getTransaction().commit();
-        session.close();
+	}
+	
+	@Ignore
+	@Test
+	public void testInsertCustomerVehicle() {
+		System.out.println("Inserting Customer with vehicle");
+		Customer c = em.createQuery("select c from Customer c where c.id = 0", Customer.class).getSingleResult();
+		Vehicle v = em.createQuery("select v from Vehicle v where v.id = 0", Vehicle.class).getSingleResult();
+		c.getVehicles().add(v);
+		em.getTransaction().begin();
+		em.persist(c);
+		em.flush();
+		em.getTransaction().commit();
+		
 	}
 }

@@ -9,7 +9,7 @@ public class AbstractCustomerController {
 	@FXML TextField firstNameField;
 	@FXML TextField lastNameField;
 	
-	private Customer customer;
+	protected Customer customer;
 	
 	public void setCustomer(Customer customer){
 		this.customer = customer;

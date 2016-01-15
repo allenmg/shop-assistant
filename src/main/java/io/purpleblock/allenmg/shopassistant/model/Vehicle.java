@@ -1,45 +1,99 @@
 package io.purpleblock.allenmg.shopassistant.model;
 
 import java.math.BigInteger;
-import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ForeignKey;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
+import javafx.beans.property.SimpleObjectProperty;
+import javafx.beans.property.SimpleStringProperty;
+
 @Entity
 @Table( name = "VEHICLE" )
-public class Vehicle {
-	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	@Column(name="id")
-	private Long id;
+public class Vehicle extends BaseEntity {
+	
+	
+	private final SimpleStringProperty plate = new SimpleStringProperty();
+	private final SimpleStringProperty vin = new SimpleStringProperty();
+	private final SimpleStringProperty make = new SimpleStringProperty();
+	private final SimpleStringProperty model = new SimpleStringProperty();
+	private final SimpleObjectProperty<BigInteger> year = new SimpleObjectProperty<BigInteger>();
+	//TODO this likley won't register modifications to elements in the list.  Should convert this to ObservableList
+	private final SimpleObjectProperty<List<Customer>> customers = new SimpleObjectProperty<List<Customer>>();
+	public final SimpleStringProperty plateProperty() {
+		return this.plate;
+	}
 	
 	@Column(name="plate")
-	private String plate;
-
+	public final java.lang.String getPlate() {
+		return this.plateProperty().get();
+	}
+	
+	public final void setPlate(final java.lang.String plate) {
+		this.plateProperty().set(plate);
+	}
+	
+	public final SimpleStringProperty vinProperty() {
+		return this.vin;
+	}
+	
 	@Column(name="vin")
-	private String vin;
+	public final java.lang.String getVin() {
+		return this.vinProperty().get();
+	}
+	
+	public final void setVin(final java.lang.String vin) {
+		this.vinProperty().set(vin);
+	}
+	
+	public final SimpleStringProperty makeProperty() {
+		return this.make;
+	}
 	
 	@Column(name="make")
-	private String make;
+	public final java.lang.String getMake() {
+		return this.makeProperty().get();
+	}
+	
+	public final void setMake(final java.lang.String make) {
+		this.makeProperty().set(make);
+	}
+	
+	public final SimpleStringProperty modelProperty() {
+		return this.model;
+	}
 	
 	@Column(name="model")
-	private String model;
+	public final java.lang.String getModel() {
+		return this.modelProperty().get();
+	}
+	
+	public final void setModel(final java.lang.String model) {
+		this.modelProperty().set(model);
+	}
+	
+	public final SimpleObjectProperty<BigInteger> yearProperty() {
+		return this.year;
+	}
 	
 	@Column(name="year")
-	private BigInteger year;
+	public final java.math.BigInteger getYear() {
+		return this.yearProperty().get();
+	}
 	
-	@Column(name="ts", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false)
-	private LocalDateTime ts;
+	public final void setYear(final java.math.BigInteger year) {
+		this.yearProperty().set(year);
+	}
+	
+	public final SimpleObjectProperty<List<Customer>> customersProperty() {
+		return this.customers;
+	}
 	
 	@ManyToMany
 	@JoinTable(name = "CUSTOMER_VEHICLE", 
@@ -48,69 +102,12 @@ public class Vehicle {
 		foreignKey=@ForeignKey(name="vehicle_fk"), 
 		inverseForeignKey=@ForeignKey(name="customer_fk")
 	)
-	private List<Customer> customers;
-
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
+	public final java.util.List<io.purpleblock.allenmg.shopassistant.model.Customer> getCustomers() {
+		return this.customersProperty().get();
 	}
 	
-	public String getPlate() {
-		return plate;
+	public final void setCustomers(final java.util.List<io.purpleblock.allenmg.shopassistant.model.Customer> customers) {
+		this.customersProperty().set(customers);
 	}
 
-	public void setPlate(String plate) {
-		this.plate = plate;
-	}
-
-	public String getVin() {
-		return vin;
-	}
-
-	public void setVin(String vin) {
-		this.vin = vin;
-	}
-
-	public String getMake() {
-		return make;
-	}
-
-	public void setMake(String make) {
-		this.make = make;
-	}
-
-	public String getModel() {
-		return model;
-	}
-
-	public void setModel(String model) {
-		this.model = model;
-	}
-
-	public BigInteger getYear() {
-		return year;
-	}
-
-	public void setYear(BigInteger year) {
-		this.year = year;
-	}
-
-	public LocalDateTime getTs() {
-		return ts;
-	}
-
-	public void setTs(LocalDateTime ts) {
-		this.ts = ts;
-	}
-
-	public List<Customer> getCustomers() {
-		return customers;
-	}
-
-	public void setCustomers(List<Customer> customers) {
-		this.customers = customers;
-	}
 }

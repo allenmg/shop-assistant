@@ -1,11 +1,11 @@
 package io.purpleblock.allenmg.shopassistant.gui;
 
-import org.hibernate.SessionFactory;
+import javax.persistence.EntityManagerFactory;
 
 import com.google.inject.AbstractModule;
 
 import io.purpleblock.allenmg.shopassistant.persistence.CustomerDAO;
-import io.purpleblock.allenmg.shopassistant.persistence.ShopSessionFactoryProvider;
+import io.purpleblock.allenmg.shopassistant.persistence.EntityManagerFactoryProvider;
 import io.purpleblock.allenmg.shopassistant.persistence.VehicleDAO;
 
 public class ApplicationModule extends AbstractModule {
@@ -13,7 +13,7 @@ public class ApplicationModule extends AbstractModule {
 	@Override
 	protected void configure() {
 		
-		bind(SessionFactory.class).toProvider(ShopSessionFactoryProvider.class);
+		bind(EntityManagerFactory.class).toProvider(EntityManagerFactoryProvider.class);
 		
 		bind(CustomerDAO.class);
 		bind(VehicleDAO.class);
