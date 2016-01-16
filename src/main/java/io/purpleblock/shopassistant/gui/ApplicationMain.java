@@ -11,8 +11,10 @@ import javafx.stage.WindowEvent;
 
 public class ApplicationMain extends Application {
 
+	private static SplashScreen splash;
 	
 	public static void main(String[] args) {
+		splash = new SplashScreen();
 		launch(args);
 	}
 
@@ -36,7 +38,7 @@ public class ApplicationMain extends Application {
 				EntityManagerFactoryProvider.closeFactory();
 			}
 		});
-		
+		splash.dispose();
 		primaryStage.show();
 	}
 
