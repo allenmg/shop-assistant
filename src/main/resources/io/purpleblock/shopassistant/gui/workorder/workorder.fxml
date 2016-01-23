@@ -35,7 +35,7 @@
       </TitledPane>
       <TitledPane animated="false" collapsible="false" text="Vehicle Information">
         <content>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+          <fx:include fx:id="vehicleAbstract" source="/io/purpleblock/shopassistant/gui/vehicle/vehicleAbstract.fxml"></fx:include>
         </content>
       </TitledPane>
       <TitledPane animated="false" collapsible="false" text="Maintenance Information">

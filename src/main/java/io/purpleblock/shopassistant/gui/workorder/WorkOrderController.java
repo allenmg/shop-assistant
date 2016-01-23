@@ -3,7 +3,9 @@ package io.purpleblock.shopassistant.gui.workorder;
 import javax.inject.Inject;
 
 import io.purpleblock.shopassistant.gui.customer.AbstractCustomerController;
+import io.purpleblock.shopassistant.gui.vehicle.AbstractVehicleController;
 import io.purpleblock.shopassistant.model.Customer;
+import io.purpleblock.shopassistant.model.Vehicle;
 import io.purpleblock.shopassistant.persistence.CustomerDAO;
 import io.purpleblock.shopassistant.persistence.VehicleDAO;
 import javafx.fxml.FXML;
@@ -14,6 +16,7 @@ public class WorkOrderController {
 	@FXML TextField purchaseOrderText;
 	
 	@FXML AbstractCustomerController customerAbstractController;
+	@FXML AbstractVehicleController vehicleAbstractController;
 	
 	private final CustomerDAO customerDAO;
 	private final VehicleDAO vehicleDAO;
@@ -30,5 +33,9 @@ public class WorkOrderController {
 	
 	public void setCustomer(Customer customer){
 		customerAbstractController.setCustomer(customer);
+	}
+	
+	public void setVehicle(Vehicle vehicle){
+		vehicleAbstractController.setVehicle(vehicle);
 	}
 }

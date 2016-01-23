@@ -100,6 +100,7 @@ public class ApplicationController {
 		GuiceFXMLLoader loader = new GuiceFXMLLoader(WorkOrderController.class.getResource("workorder.fxml"));
 	    Parent root = loader.load();
 	    loader.getFXMLLoader().<WorkOrderController>getController().setCustomer(customerDao.getCustomers().get(0));
+	    loader.getFXMLLoader().<WorkOrderController>getController().setVehicle(vehicleDao.getVehicles().get(0));
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Work Order");
 	    stage.initModality(Modality.WINDOW_MODAL);
