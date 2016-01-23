@@ -15,8 +15,8 @@ public class WorkOrderController {
 	@FXML TextField workOrderText;
 	@FXML TextField purchaseOrderText;
 	
-	@FXML AbstractCustomerController customerAbstractController;
-	@FXML AbstractVehicleController vehicleAbstractController;
+	@FXML AbstractCustomerController customerController;
+	@FXML AbstractVehicleController vehicleController;
 	
 	private final CustomerDAO customerDAO;
 	private final VehicleDAO vehicleDAO;
@@ -32,10 +32,10 @@ public class WorkOrderController {
 	}
 	
 	public void setCustomer(Customer customer){
-		customerAbstractController.setCustomer(customer);
+		customerController.setCustomer(customer);
 	}
 	
 	public void setVehicle(Vehicle vehicle){
-		vehicleAbstractController.setVehicle(vehicle);
+		vehicleController.setVehicle(vehicle);
 	}
 }

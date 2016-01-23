@@ -6,7 +6,7 @@ import io.purpleblock.shopassistant.model.Vehicle;
 import io.purpleblock.shopassistant.persistence.VehicleDAO;
 import javafx.stage.Stage;
 
-public class VehicleController  extends AbstractVehicleController {
+public class VehicleController extends AbstractVehicleController {
 	
 	private final VehicleDAO vehicleDao;
 	
@@ -19,7 +19,7 @@ public class VehicleController  extends AbstractVehicleController {
 		setVehicle(new Vehicle());
 	}
 	
-	public void save() {
+	public void saveVehicle() {
 		System.out.println("SAVING...");
 		vehicleDao.saveVehicle(vehicle);
 		System.out.println("SAVED!");

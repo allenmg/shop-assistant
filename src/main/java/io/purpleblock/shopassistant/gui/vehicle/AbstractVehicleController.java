@@ -5,7 +5,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 import javafx.util.converter.BigIntegerStringConverter;
 
-public abstract class AbstractVehicleController {
+public class AbstractVehicleController {
 	@FXML TextField plateField;
 	@FXML TextField yearField;
 	@FXML TextField makeField;

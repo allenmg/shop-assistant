@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+<GridPane hgap="10.0" xmlns="http://javafx.com/javafx/8.0.65" xmlns:fx="http://javafx.com/fxml/1" fx:controller="io.purpleblock.shopassistant.gui.vehicle.AbstractVehicleController">
+  <columnConstraints>
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="38.0" />
+    <ColumnConstraints hgrow="SOMETIMES" maxWidth="164.0" minWidth="10.0" prefWidth="162.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="95.0" minWidth="10.0" prefWidth="37.0" />
+      <ColumnConstraints hgrow="SOMETIMES" maxWidth="167.0" minWidth="10.0" prefWidth="163.0" />
+  </columnConstraints>
+  <rowConstraints>
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+  </rowConstraints>
+   <children>
+      <Label text="Plate" GridPane.columnIndex="2" />
+      <TextField fx:id="plateField" GridPane.columnIndex="3" />
+      <Label text="Year" />
+      <TextField fx:id="yearField" GridPane.columnIndex="1" />
+      <Label text="Make" GridPane.rowIndex="1" />
+      <TextField fx:id="makeField" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+      <Label text="Model" GridPane.rowIndex="2" />
+      <TextField fx:id="modelField" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+      <Label text="VIN #" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+      <TextField fx:id="vinNumberField" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+   </children>
+</GridPane>

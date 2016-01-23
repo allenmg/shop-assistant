@@ -60,7 +60,7 @@ public class ApplicationController {
 	public void addCustomer(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 	    Parent root = GuiceFXMLLoader.load(
-	        CustomerController.class.getResource("customer.fxml"));
+	        CustomerController.class.getResource("customerAdd.fxml"));
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Add Customer");
 	    stage.initModality(Modality.WINDOW_MODAL);
@@ -79,7 +79,7 @@ public class ApplicationController {
 	public void addVehicle(ActionEvent event) throws IOException {
 		Stage stage = new Stage();
 	    Parent root = GuiceFXMLLoader.load(
-	        VehicleController.class.getResource("vehicle.fxml"));
+	        VehicleController.class.getResource("vehicleAdd.fxml"));
 	    stage.setScene(new Scene(root));
 	    stage.setTitle("Add Vehicle");
 	    stage.initModality(Modality.WINDOW_MODAL);
