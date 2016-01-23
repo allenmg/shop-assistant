@@ -30,12 +30,12 @@
       </FlowPane>
       <TitledPane animated="false" collapsible="false" text="Customer Information">
         <content>
-          <fx:include fx:id="customerAbstract" source="/io/purpleblock/shopassistant/gui/customer/customerAbstract.fxml"></fx:include>
+          <fx:include fx:id="customerAbstract" source="../customer/customerAbstract.fxml"></fx:include>
         </content>
       </TitledPane>
       <TitledPane animated="false" collapsible="false" text="Vehicle Information">
         <content>
-          <fx:include fx:id="vehicleAbstract" source="/io/purpleblock/shopassistant/gui/vehicle/vehicleAbstract.fxml"></fx:include>
+          <fx:include fx:id="vehicleAbstract" source="../vehicle/vehicleAbstract.fxml"></fx:include>
         </content>
       </TitledPane>
       <TitledPane animated="false" collapsible="false" text="Maintenance Information">
