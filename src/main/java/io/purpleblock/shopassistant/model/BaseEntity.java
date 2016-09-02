@@ -24,48 +24,48 @@ public abstract class BaseEntity {
 	
 	@PreUpdate
 	@PrePersist
-	public final void updateTimestamp() {
+	public void updateTimestamp() {
 		updatedTs.set(LocalDateTime.now());
 	}
 	
-	public final SimpleLongProperty idProperty() {
+	public SimpleLongProperty idProperty() {
 		return this.id;
 	}
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name="id")
-	public final long getId() {
+	public long getId() {
 		return this.idProperty().get();
 	}
 
-	public final void setId(final long id) {
+	public void setId(final long id) {
 		this.idProperty().set(id);
 	}
 
-	public final SimpleObjectProperty<LocalDateTime> createdTsProperty() {
+	public SimpleObjectProperty<LocalDateTime> createdTsProperty() {
 		return this.createdTs;
 	}
 
 	@Column(name="created_ts", columnDefinition="TIMESTAMP DEFAULT CURRENT_TIMESTAMP", insertable=false, nullable=false)
-	public final java.time.LocalDateTime getCreatedTs() {
+	public java.time.LocalDateTime getCreatedTs() {
 		return this.createdTsProperty().get();
 	}
 
-	public final void setCreatedTs(final java.time.LocalDateTime createdTs) {
+	public void setCreatedTs(final java.time.LocalDateTime createdTs) {
 		this.createdTsProperty().set(createdTs);
 	}
 
-	public final SimpleObjectProperty<LocalDateTime> updatedTsProperty() {
+	public SimpleObjectProperty<LocalDateTime> updatedTsProperty() {
 		return this.updatedTs;
 	}
 
 	@Column(name="updated_ts", columnDefinition="TIMESTAMP default CURRENT_TIMESTAMP", insertable=true, nullable=false)
-	public final java.time.LocalDateTime getUpdatedTs() {
+	public java.time.LocalDateTime getUpdatedTs() {
 		return this.updatedTsProperty().get();
 	}
 
-	public final void setUpdatedTs(final java.time.LocalDateTime updatedTs) {
+	public void setUpdatedTs(final java.time.LocalDateTime updatedTs) {
 		this.updatedTsProperty().set(updatedTs);
 	}
 	

@@ -26,72 +26,72 @@ public class Vehicle extends BaseEntity {
 	private final SimpleObjectProperty<BigInteger> year = new SimpleObjectProperty<BigInteger>();
 	//TODO this likley won't register modifications to elements in the list.  Should convert this to ObservableList
 	private final SimpleObjectProperty<List<Customer>> customers = new SimpleObjectProperty<List<Customer>>();
-	public final SimpleStringProperty plateProperty() {
+	public SimpleStringProperty plateProperty() {
 		return this.plate;
 	}
 	
 	@Column(name="plate")
-	public final java.lang.String getPlate() {
+	public java.lang.String getPlate() {
 		return this.plateProperty().get();
 	}
 	
-	public final void setPlate(final java.lang.String plate) {
+	public void setPlate(final java.lang.String plate) {
 		this.plateProperty().set(plate);
 	}
 	
-	public final SimpleStringProperty vinProperty() {
+	public SimpleStringProperty vinProperty() {
 		return this.vin;
 	}
 	
 	@Column(name="vin")
-	public final java.lang.String getVin() {
+	public java.lang.String getVin() {
 		return this.vinProperty().get();
 	}
 	
-	public final void setVin(final java.lang.String vin) {
+	public void setVin(final java.lang.String vin) {
 		this.vinProperty().set(vin);
 	}
 	
-	public final SimpleStringProperty makeProperty() {
+	public SimpleStringProperty makeProperty() {
 		return this.make;
 	}
 	
 	@Column(name="make")
-	public final java.lang.String getMake() {
+	public java.lang.String getMake() {
 		return this.makeProperty().get();
 	}
 	
-	public final void setMake(final java.lang.String make) {
+	public void setMake(final java.lang.String make) {
 		this.makeProperty().set(make);
 	}
 	
-	public final SimpleStringProperty modelProperty() {
+	public SimpleStringProperty modelProperty() {
 		return this.model;
 	}
 	
 	@Column(name="model")
-	public final java.lang.String getModel() {
+	public java.lang.String getModel() {
 		return this.modelProperty().get();
 	}
 	
-	public final void setModel(final java.lang.String model) {
+	public void setModel(final java.lang.String model) {
 		this.modelProperty().set(model);
 	}
 	
-	public final SimpleObjectProperty<BigInteger> yearProperty() {
+	public SimpleObjectProperty<BigInteger> yearProperty() {
 		return this.year;
 	}
 	
 	@Column(name="year")
-	public final java.math.BigInteger getYear() {
+	public java.math.BigInteger getYear() {
 		return this.yearProperty().get();
 	}
 	
-	public final void setYear(final java.math.BigInteger year) {
+	public void setYear(final java.math.BigInteger year) {
 		this.yearProperty().set(year);
 	}
 	
-	public final SimpleObjectProperty<List<Customer>> customersProperty() {
+	public SimpleObjectProperty<List<Customer>> customersProperty() {
 		return this.customers;
 	}
 	
@@ -102,11 +102,11 @@ public class Vehicle extends BaseEntity {
 		foreignKey=@ForeignKey(name="vehicle_fk"), 
 		inverseForeignKey=@ForeignKey(name="customer_fk")
 	)
-	public final java.util.List<io.purpleblock.shopassistant.model.Customer> getCustomers() {
+	public java.util.List<io.purpleblock.shopassistant.model.Customer> getCustomers() {
 		return this.customersProperty().get();
 	}
 	
-	public final void setCustomers(final java.util.List<io.purpleblock.shopassistant.model.Customer> customers) {
+	public void setCustomers(final java.util.List<io.purpleblock.shopassistant.model.Customer> customers) {
 		this.customersProperty().set(customers);
 	}
 

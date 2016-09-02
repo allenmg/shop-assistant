@@ -25,33 +25,33 @@ public class Customer extends BaseEntity {
 	private final ObjectProperty<List<Vehicle>> vehicles = new SimpleObjectProperty<List<Vehicle>>();
 	private final ObjectProperty<Address> address = new SimpleObjectProperty<Address>();
 	
-	public final StringProperty lastNameProperty() {
+	public StringProperty lastNameProperty() {
 		return this.lastName;
 	}
 	
 	@Column(name="last_name")
-	public final java.lang.String getLastName() {
+	public java.lang.String getLastName() {
 		return this.lastNameProperty().get();
 	}
 	
-	public final void setLastName(final java.lang.String lastName) {
+	public void setLastName(final java.lang.String lastName) {
 		this.lastNameProperty().set(lastName);
 	}
 	
-	public final StringProperty firstNameProperty() {
+	public StringProperty firstNameProperty() {
 		return this.firstName;
 	}
 	
 	@Column(name="first_name")
-	public final java.lang.String getFirstName() {
+	public java.lang.String getFirstName() {
 		return this.firstNameProperty().get();
 	}
 	
-	public final void setFirstName(final java.lang.String firstName) {
+	public void setFirstName(final java.lang.String firstName) {
 		this.firstNameProperty().set(firstName);
 	}
 	
-	public final ObjectProperty<List<Vehicle>> vehiclesProperty() {
+	public ObjectProperty<List<Vehicle>> vehiclesProperty() {
 		return this.vehicles;
 	}
 	
@@ -62,25 +62,25 @@ public class Customer extends BaseEntity {
 		foreignKey=@ForeignKey(name="customer_fk"),
 		inverseForeignKey=@ForeignKey(name="vehicle_fk")
 	)
-	public final java.util.List<io.purpleblock.shopassistant.model.Vehicle> getVehicles() {
+	public java.util.List<io.purpleblock.shopassistant.model.Vehicle> getVehicles() {
 		return this.vehiclesProperty().get();
 	}
 	
-	public final void setVehicles(final java.util.List<io.purpleblock.shopassistant.model.Vehicle> vehicles) {
+	public void setVehicles(final java.util.List<io.purpleblock.shopassistant.model.Vehicle> vehicles) {
 		this.vehiclesProperty().set(vehicles);
 	}
 	
-	public final ObjectProperty<Address> addressProperty() {
+	public ObjectProperty<Address> addressProperty() {
 		return this.address;
 	}
 	
 	@OneToOne
 	@JoinColumn(name="address_id")
-	public final io.purpleblock.shopassistant.model.Address getAddress() {
+	public io.purpleblock.shopassistant.model.Address getAddress() {
 		return this.addressProperty().get();
 	}
 	
-	public final void setAddress(final io.purpleblock.shopassistant.model.Address address) {
+	public void setAddress(final io.purpleblock.shopassistant.model.Address address) {
 		this.addressProperty().set(address);
 	}
 
